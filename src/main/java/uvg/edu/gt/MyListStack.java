@@ -1,5 +1,6 @@
 package uvg.edu.gt;
 
+import java.util.Scanner;
 
 /**
  * Esta clase es un stack generico
@@ -9,9 +10,26 @@ public class MyListStack<E> implements UVGStack<E> {
     
     protected UVGLList<E> stack;
 
-    public MyListStack(String type) {
+    public MyListStack() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Que tipo de lista prefiere?");
+        System.out.println("1. Single Linked List");
+        System.out.println("2. Double Linked List.");
+        int op = scanner.nextInt();
+        String listType = "lista singularmente enlazad";
+        switch(op){
+            case 1:
+                listType = "lista singularmente enlazada";
+                break;
+            case 2:
+                listType = "lista doblemente enlazada";
+                break;
+            default:
+                break;
+
+        }
         FactoryList<E> factory = new FactoryList<E>();
-        stack = factory.createList(type);
+        stack = factory.createList(listType);
     }
 
 

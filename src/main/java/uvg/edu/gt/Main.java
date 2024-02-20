@@ -20,13 +20,9 @@ public class Main {
                 break;
             case 3:
                 stackType = "Linked List";
-                System.out.println("Que implementacion prefiere de la lista?");
-                int opt = connIn.nextInt();
-                String stackType = "";
                 break;
             default:
                 System.out.println("Adios.");
-
         }
 
 

@@ -1,63 +1,93 @@
 package uvg.edu.gt;
 
-public class DLList<T> implements UVGLList<T>{
-    private class Node<T>{
+public class DLList<T> implements UVGLList<T> {
+    private class Node<U> {
         /*
-        Single Linked List Node
+        Double Linked List Node
         No utiliza key, solo guarda data, porque no voy a hacer
         search.
          */
-        public T data;
-        public Node<T> next = null;
-        public Node<T> prev = null;
-        public Node(T cData){
+        public U data;
+        public Node<U> next = null;
+        public Node<U> prev = null;
+
+        public Node(U cData) {
             data = cData;
         }
     }
-    public Node <T> head = null;
-    public Node<T> tail = null;
-    public void removeFirst(){
-        if (head != null){
-            if (head == tail){
+
+    private Node<T> head = null;
+    private Node<T> tail = null;
+
+    @Override
+    public T removeLast() {
+        if (tail != null) {
+            if (head == tail) {
+                T removedData = head.data;
                 head = null;
                 tail = null;
+                return removedData;
             } else {
-                head = head.next;
+                T removedData = tail.data;
+                tail = tail.prev;
+                tail.next = null;
+                return removedData;
             }
         }
+        return null;
     }
-    public T getFirst(){
-        if (head == null){
+
+    @Override
+    public T getLast() {
+        if (tail == null) {
             return null;
         }
-        return head.data;
+        return tail.data;
     }
-    public void addLast(T x){
+
+    @Override
+    public void addLast(T x) {
         Node<T> newNode = new Node<T>(x);
-        if (head == null){
+        if (head == null) {
             head = newNode;
             tail = newNode;
         } else {
+            newNode.prev = tail;
             tail.next = newNode;
             tail = newNode;
         }
     }
-    public boolean isEmpty(){
+
+    @Override
+    public boolean isEmpty() {
         return (head == null);
     }
-    public String toString(){
-        String txt = "null<-Head:";
-        Node<T> x = head;
-        while (x!=null){
-            txt += "[" + x.data + "]";
-            if (x == tail){
-                txt += ":Tail->";
-            } else {
-                txt += "=>";
-            }
-            x = x.next;
+
+    @Override
+    public int size() {
+        int count = 0;
+        Node<T> current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
         }
-        txt += "null";
-        return txt;
+        return count;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder txt = new StringBuilder("null<-Head:");
+        Node<T> current = head;
+        while (current != null) {
+            txt.append("[").append(current.data).append("]");
+            if (current == tail) {
+                txt.append(":Tail->");
+            } else {
+                txt.append("=>");
+            }
+            current = current.next;
+        }
+        txt.append("null");
+        return txt.toString();
     }
 }
