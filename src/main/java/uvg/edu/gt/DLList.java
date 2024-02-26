@@ -34,7 +34,7 @@ public class DLList<T> implements UVGLList<T> {
 
     @Override
     public void addLast(T x) {
-        DoubleNode<T> newNode = new Node<T>(x);
+        DoubleNode<T> newNode = new DoubleNode<T>(x);
         if (head == null) {
             head = newNode;
             tail = newNode;

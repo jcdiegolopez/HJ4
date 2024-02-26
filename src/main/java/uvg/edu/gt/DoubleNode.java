@@ -1,6 +1,6 @@
-package main.java.uvg.edu.gt;
+package uvg.edu.gt;
 
-private class DoubleNode<U> {
+public class DoubleNode<U> {
     /*
     Double Linked List Node
     No utiliza key, solo guarda data, porque no voy a hacer

@@ -53,7 +53,7 @@ public class SLList<T> implements UVGLList<T> {
 
     @Override
     public void addLast(T x) {
-        SingleNode<T> newNode = new Node<T>(x);
+        SingleNode<T> newNode = new SingleNode<T>(x);
 
         if (head == null) {
             head = newNode;
