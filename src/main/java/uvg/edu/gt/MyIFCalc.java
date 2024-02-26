@@ -5,8 +5,8 @@ public class MyIFCalc implements INFIXCalc{
     
     public String toPOSFIX(String IFexpression) throws Exception{
         stack.push("#");
-        String PFexpression = "";
-        for (String ch : IFexpression.split("")) {
+        String PFexpression = " ";
+        for (String ch : IFexpression.split(" ")) {
             if(isOperand(ch)){
                 PFexpression+=ch;
             }else if(ch.equals("(")){

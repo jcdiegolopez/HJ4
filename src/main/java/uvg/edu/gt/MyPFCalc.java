@@ -16,7 +16,7 @@ public class MyPFCalc implements POSFIXCalc{
      * @return Retorna el resultado de las operaciones validas
      */
     public int evaluate(String expression) {
-        MyVectorStack<Integer> stack = new MyVectorStack<>();
+        MyVectorStack<Integer> stack = new MyVectorStack<Integer>();
 
         //Devidir en los espacios entre caracteres
         String[] elements = expression.split(" ");
