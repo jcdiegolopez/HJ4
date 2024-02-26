@@ -2,21 +2,9 @@ package uvg.edu.gt;
 
 public class SLList<T> implements UVGLList<T> {
 
-    private class Node<U> {
-        /*
-        Single Linked List Node
-        No utiliza key, solo guarda data, porque no voy a hacer
-        search.
-         */
-        public U data;
-        public Node<U> next = null;
+    
 
-        public Node(U cData) {
-            data = cData;
-        }
-    }
-
-    private Node<T> head = null;
+    private SingleNode<T> head = null;
 
     @Override
     public boolean isEmpty() {
@@ -29,7 +17,7 @@ public class SLList<T> implements UVGLList<T> {
             return null;
         }
 
-        Node<T> current = head;
+        SingleNode<T> current = head;
         while (current.next != null) {
             current = current.next;
         }
@@ -49,8 +37,8 @@ public class SLList<T> implements UVGLList<T> {
             return removedData;
         }
 
-        Node<T> current = head;
-        Node<T> previous = null;
+        SingleNode<T> current = head;
+        SingleNode<T> previous = null;
 
         while (current.next != null) {
             previous = current;
@@ -65,12 +53,12 @@ public class SLList<T> implements UVGLList<T> {
 
     @Override
     public void addLast(T x) {
-        Node<T> newNode = new Node<T>(x);
+        SingleNode<T> newNode = new Node<T>(x);
 
         if (head == null) {
             head = newNode;
         } else {
-            Node<T> current = head;
+            SingleNode<T> current = head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -81,7 +69,7 @@ public class SLList<T> implements UVGLList<T> {
     @Override
     public int size() {
         int count = 0;
-        Node<T> current = head;
+        SingleNode<T> current = head;
         while (current != null) {
             count++;
             current = current.next;
@@ -92,7 +80,7 @@ public class SLList<T> implements UVGLList<T> {
     @Override
     public String toString() {
         StringBuilder txt = new StringBuilder("Head:");
-        Node<T> x = head;
+        SingleNode<T> x = head;
         while (x != null) {
             txt.append("[").append(x.data).append("]->");
             x = x.next;
