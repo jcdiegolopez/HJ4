@@ -16,7 +16,7 @@ public class MyListStack<E> implements UVGStack<E> {
         System.out.println("1. Single Linked List");
         System.out.println("2. Double Linked List.");
         int op = scanner.nextInt();
-        String listType = "lista singularmente enlazad";
+        String listType = "lista singularmente enlazada";
         switch(op){
             case 1:
                 listType = "lista singularmente enlazada";

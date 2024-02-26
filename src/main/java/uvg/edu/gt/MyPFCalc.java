@@ -1,5 +1,6 @@
 package uvg.edu.gt;
 
+import java.util.Scanner;
 
 /**
  * Esta es la calculadora donde analiza la linea de string y los elementos a calcular
@@ -8,6 +9,36 @@ package uvg.edu.gt;
 
 
 public class MyPFCalc implements POSFIXCalc{
+    UVGStack<Integer> stack;
+
+
+    public MyPFCalc(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Que implementacion prefiere para el stack?");
+        System.out.println("1. Array List");
+        System.out.println("2. Vector List.");
+        System.out.println("3. Linked List.");
+        System.out.println("4. Salir.");
+        int op = scanner.nextInt();
+        String stackType;
+        switch(op){
+            case 1:
+                stackType = "Array List";
+                break;
+            case 2:
+                stackType = "Vector List";
+                break;
+            case 3:
+                stackType = "Linked List";
+                break;
+            default:
+                stackType = "Array List";
+        }
+        FactoryStack<Integer> factory = new FactoryStack<Integer>();
+        stack = factory.createStack(stackType);
+        
+        
+    }
 
     
      /**
@@ -16,7 +47,7 @@ public class MyPFCalc implements POSFIXCalc{
      * @return Retorna el resultado de las operaciones validas
      */
     public int evaluate(String expression) {
-        MyVectorStack<Integer> stack = new MyVectorStack<Integer>();
+        
 
         //Devidir en los espacios entre caracteres
         String[] elements = expression.split(" ");
