@@ -3,6 +3,9 @@ package uvg.edu.gt;
 public class MyIFCalc implements INFIXCalc{
     private UVGStack<String> stack = new MyArrayStack<String>();
     
+    public MyIFCalc(UVGStack<String> stack) {
+        this.stack = stack;
+    }
     public String toPOSFIX(String IFexpression) throws Exception{
         stack.push("#");
         String PFexpression = " ";

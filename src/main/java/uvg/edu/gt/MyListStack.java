@@ -11,6 +11,7 @@ public class MyListStack<E> implements UVGStack<E> {
     protected UVGLList<E> stack;
 
     public MyListStack() {
+        @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
         System.out.println("Que tipo de lista prefiere?");
         System.out.println("1. Single Linked List");

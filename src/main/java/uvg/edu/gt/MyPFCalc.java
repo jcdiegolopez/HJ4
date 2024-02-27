@@ -9,10 +9,15 @@ import java.util.Scanner;
 
 
 public class MyPFCalc implements POSFIXCalc{
-    UVGStack<Integer> stack;
+    
+    private final UVGStack<Integer> stack;
 
+    public MyPFCalc (UVGStack<Integer> stack){
+        this.stack = stack;
+    }
 
     public MyPFCalc(){
+        @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
         System.out.println("Que implementacion prefiere para el stack?");
         System.out.println("1. Array List");
@@ -119,5 +124,10 @@ public class MyPFCalc implements POSFIXCalc{
             default:
                 throw new IllegalArgumentException("Unrecognized operator: " + operator);
         }
+    }
+
+    public String toPOSFIX(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toPOSFIX'");
     }
 }
