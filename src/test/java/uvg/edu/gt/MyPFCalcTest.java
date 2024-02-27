@@ -18,16 +18,11 @@ public class MyPFCalcTest {
     @Test
     public void testEvaluate() {
         // Prueba básica para evaluar una expresión postfix
-        int result = pfCalc.evaluate("23*5+");
+        int result = pfCalc.evaluate("2 3 * 5 + ");
         assertEquals(11, result);
     }
-
-    @Test
-    public void testToPOSFIX() throws Exception {
-        // Prueba la conversión de una expresión infix a postfix
-        String postfixExpression = pfCalc.toPOSFIX("(3+5)*2");
-        assertEquals("35+2*", postfixExpression);
-    }
+ 
+    
 
     @Test
     public void testIsOperand() {

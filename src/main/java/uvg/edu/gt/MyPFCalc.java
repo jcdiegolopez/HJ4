@@ -125,9 +125,4 @@ public class MyPFCalc implements POSFIXCalc{
                 throw new IllegalArgumentException("Unrecognized operator: " + operator);
         }
     }
-
-    public String toPOSFIX(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toPOSFIX'");
-    }
 }
