@@ -4,36 +4,40 @@ package uvg.edu.gt;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        
-        // Inicializar la calculadora utilizando el patrón Singleton
-        @SuppressWarnings("unchecked")
-        UVGStack<String> singleCalc = (UVGStack<String>) SingleCalc.getInstance();
+    public static void main(String[] args) throws IOException {
+        try {
+            // Crear la instancia de la calculadora
+            SingleCalc singleCalc = (SingleCalc) SingleCalc.getInstance();
 
+            // Crear la instancia de la calculadora de infix a postfix
+            MyIFCalc infixToPostfixCalculator = new MyIFCalc();
 
-        // Instanciar la clase MyIFCalc
-        MyIFCalc infixToPostfixCalculator = new MyIFCalc(singleCalc);
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("datos.txt"))) {
+            // Leer el archivo de expresiones
+            String fileName = "datos.txt";
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
-            while ((line = reader.readLine()) != null) {
-                // Procesar cada línea del archivo como una expresión infix
-                String[] expressions = line.split(" ");
-                for (String infixExpression : expressions) {
-                    // Convertir a expresión postfix
-                    String postfixExpression = infixToPostfixCalculator.toPOSFIX(infixExpression);
-                    System.out.println("Expresión postfix: " + postfixExpression);
 
-                    // Evaluar la expresión postfix
-                    int result = ((POSFIXCalc) singleCalc).evaluate(postfixExpression);
-                    System.out.println("Resultado: " + result);
-                }
+            // Procesar cada línea del archivo
+            while ((line = reader.readLine()) != null) {
+                // Convertir a postfix
+                String postfixExpression = infixToPostfixCalculator.toPOSFIX(line);
+                System.out.println("Expresión Infix: " + line);
+                System.out.println("Expresión Postfix: " + postfixExpression);
+
+                // Evaluar la expresión postfix
+                int result = singleCalc.evaluate(postfixExpression);
+                System.out.println("Resultado: " + result);
+                System.out.println("--------------------------");
             }
+
+            // Cerrar el lector
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+

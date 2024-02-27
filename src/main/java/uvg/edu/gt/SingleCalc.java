@@ -11,4 +11,9 @@ public class SingleCalc {
             return calcInstance;
         }
     }
+
+    public int evaluate(String postfixExpression) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'evaluate'");
+    }
 }
